@@ -89,9 +89,9 @@
         ).style.backgroundColor = `rgba(${rNum()},${rNum()},${rNum()}, ${Math.random()})`;
       };
 
-      document.querySelector("#generateColor").addEventListener("click", () => {
-        hexGenerator("body");
-      });
+      document
+        .querySelector("#generateColor")
+        .addEventListener("click", () => hexGenerator("body"));
     </script>
   </body>
 </html>
