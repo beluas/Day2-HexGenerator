@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hex Generator</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: dodgerblue;
+        transition: background-color 0.5s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+      button {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: 2px solid #fff;
+        padding: 0.8em 1em;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 2em;
+        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 1px 1px #000;
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 999;
+        transition: transform 1s ease-in-out;
+      }
+      button::after {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        content: "";
+        width: 50%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        transition: left 0.8s ease-in-out;
+      }
+      button::before {
+        position: absolute;
+        bottom: 0;
+        right: -50%;
+        content: "";
+        width: 50%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        transition: right 0.8s ease-in-out;
+      }
+      button:hover::before {
+        right: 50%;
+      }
+      button:hover::after {
+        left: 50%;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="generateColor">Generate Color</button>
+
+    <script>
+      const hexGenerator = el => {
+        // Generate number between 1 - 256
+        const rNum = () => Math.floor(Math.random() * 256);
+        // Change Background of the element provided
+        document.querySelector(
+          el
+        ).style.backgroundColor = `rgba(${rNum()},${rNum()},${rNum()}, ${Math.random()})`;
+      };
+      document
+        .querySelector("#generateColor")
+        .addEventListener("click", () => hexGenerator("body"));
+    </script>
+  </body>
+</html>
